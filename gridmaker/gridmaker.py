@@ -2,6 +2,11 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
+def print_img(img):
+    for values in img:
+        for value in values:
+            print(value, end=""),
+    print()
 
 def horizontal_image(proc):
     horizontal = np.copy(proc)
@@ -10,7 +15,7 @@ def horizontal_image(proc):
     horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 1))
     horizontal = cv2.erode(horizontal, horizontalStructure)
     horizontal = cv2.dilate(horizontal, horizontalStructure)
-    cv2.imwrite("horizontal.png", horizontal)
+    cv2.imwrite("horizontal2.png", horizontal)
     return horizontal
 
 
@@ -21,7 +26,7 @@ def vertical_image(proc):
     verticalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (1, verticalsize))
     vertical = cv2.erode(vertical, verticalStructure)
     vertical = cv2.dilate(vertical, verticalStructure)
-    cv2.imwrite("vertical.png", vertical)
+    cv2.imwrite("vertical2.png", vertical)
     return vertical
 
 
@@ -35,24 +40,20 @@ def pre_process_image(img, skip_dilate=False):
         vertical = vertical_image(proc)
         horizontal = horizontal_image(proc)
         proc = cv2.addWeighted(vertical, 1, horizontal, 1, 0.0)
-        cv2.imwrite('proc.png', proc)
+        cv2.imwrite('proc2.png', proc)
     return proc
 
 
 def main():
-    img = cv2.imread('Test1.png', cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('Test2.png', cv2.IMREAD_GRAYSCALE)
     processed = pre_process_image(img)
-    cv2.imwrite('thresholdprocess.png', processed)
-    for values in processed:
-        for value in values:
-            print(value, end=""),
-    print()
-    contours, heir = cv2.findContours(processed.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cv2.imwrite('thresholdprocess2.png', processed)
+    contours, heir = cv2.findContours(processed.copy(), cv2.RETR_TREE , cv2.CHAIN_APPROX_SIMPLE)
 
     processed = cv2.cvtColor(processed, cv2.COLOR_GRAY2RGB)
 
     all_contours = cv2.drawContours(processed.copy(), contours, -1, (255, 0, 0), 2)
-    cv2.imwrite('lololo.jpg', all_contours)
+    cv2.imwrite('lololo2.jpg', all_contours)
 
 
 if __name__ == '__main__':
