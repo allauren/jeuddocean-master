@@ -1,12 +1,33 @@
 import cv2
 import numpy as np
+import argparse
+import imutils
 from matplotlib import pyplot as plt
 
-def print_img(img):
-    for values in img:
-        for value in values:
-            print(value, end=""),
-    print()
+
+def sort_contours(cnts, method="left-to-right"):
+    # initialize the reverse flag and sort index
+    reverse = False
+    i = 0
+
+    # handle if we need to sort in reverse
+    if method == "right-to-left" or method == "bottom-to-top":
+        reverse = True
+
+    # handle if we are sorting against the y-coordinate rather than
+    # the x-coordinate of the bounding box
+    if method == "top-to-bottom" or method == "bottom-to-top":
+        i = 1
+
+    # construct the list of bounding boxes and sort them from top to
+    # bottom
+    boundingBoxes = [cv2.boundingRect(c) for c in cnts]
+    (cnts, boundingBoxes) = zip(*sorted(zip(cnts, boundingBoxes),
+                                        key=lambda b: b[1][i], reverse=reverse))
+
+    # return the list of sorted contours and bounding boxes
+    return (cnts, boundingBoxes)
+
 
 def horizontal_image(proc):
     horizontal = np.copy(proc)
@@ -15,7 +36,7 @@ def horizontal_image(proc):
     horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 1))
     horizontal = cv2.erode(horizontal, horizontalStructure)
     horizontal = cv2.dilate(horizontal, horizontalStructure)
-    cv2.imwrite("horizontal2.png", horizontal)
+    cv2.imwrite("horizontal.png", horizontal)
     return horizontal
 
 
@@ -26,7 +47,7 @@ def vertical_image(proc):
     verticalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (1, verticalsize))
     vertical = cv2.erode(vertical, verticalStructure)
     vertical = cv2.dilate(vertical, verticalStructure)
-    cv2.imwrite("vertical2.png", vertical)
+    cv2.imwrite("vertical.png", vertical)
     return vertical
 
 
@@ -40,20 +61,33 @@ def pre_process_image(img, skip_dilate=False):
         vertical = vertical_image(proc)
         horizontal = horizontal_image(proc)
         proc = cv2.addWeighted(vertical, 1, horizontal, 1, 0.0)
-        cv2.imwrite('proc2.png', proc)
     return proc
 
 
+def find_boxes(contours, img):
+    idx = 0
+    for c in contours:
+        # Returns the location and width,height for every contour
+        x, y, w, h = cv2.boundingRect(c)
+        print(x, y, w, h)
+        idx += 1
+        new_img = img[y:y + h, x:x + w]
+        cv2.imwrite(str(idx) + '.png', new_img)
+
+
 def main():
-    img = cv2.imread('Test2.png', cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('Test1.png', cv2.IMREAD_GRAYSCALE)
     processed = pre_process_image(img)
-    cv2.imwrite('thresholdprocess2.png', processed)
-    contours, heir = cv2.findContours(processed.copy(), cv2.RETR_TREE , cv2.CHAIN_APPROX_SIMPLE)
+    cv2.imwrite('processed.png', processed)
 
+    contours, tresh = cv2.findContours(processed, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     processed = cv2.cvtColor(processed, cv2.COLOR_GRAY2RGB)
-
-    all_contours = cv2.drawContours(processed.copy(), contours, -1, (255, 0, 0), 2)
-    cv2.imwrite('lololo2.jpg', all_contours)
+    all_contours = cv2.drawContours(processed.copy(), contours, -1, (128, 0, 128), 3)
+    cv2.imwrite('lololo.jpg', all_contours)
+    (contours, boundingBoxes) = sort_contours(contours, method="top-to-bottom")
+    print("coucou")
+    img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
+    find_boxes(contours, img)
 
 
 if __name__ == '__main__':
