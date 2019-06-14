@@ -5,7 +5,7 @@ import imutils
 from matplotlib import pyplot as plt
 
 
-def sort_contours(cnts, method="left-to-right"):
+def sort_contours(cnts, method="right-to-left"):
     # initialize the reverse flag and sort index
     reverse = False
     i = 0
@@ -72,7 +72,7 @@ def find_boxes(contours, img):
         print(x, y, w, h)
         idx += 1
         new_img = img[y:y + h, x:x + w]
-        cv2.imwrite(str(idx) + '.png', new_img)
+        cv2.imwrite('blocks/' + str(idx) + '.png', new_img)
 
 
 def main():
@@ -85,7 +85,6 @@ def main():
     all_contours = cv2.drawContours(processed.copy(), contours, -1, (128, 0, 128), 3)
     cv2.imwrite('lololo.jpg', all_contours)
     (contours, boundingBoxes) = sort_contours(contours, method="top-to-bottom")
-    print("coucou")
     img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
     find_boxes(contours, img)
 
