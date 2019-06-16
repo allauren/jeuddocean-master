@@ -3,29 +3,85 @@ import numpy as np
 import argparse
 import imutils
 from matplotlib import pyplot as plt
+import sys
+from cmath import isclose
+import os, shutil
+import operator
 
 
-def sort_contours(cnts, method="right-to-left"):
-    # initialize the reverse flag and sort index
+def distance_between(p1, p2):
+    a = p2[0] - p1[0]
+    b = p2[1] - p1[1]
+    return np.sqrt((a ** 2) + (b ** 2))
+
+
+def crop_and_warp(img, crop_rect):
+    top_left, top_right, bottom_right, bottom_left = crop_rect[0], crop_rect[1], crop_rect[2], crop_rect[3]
+    src = np.array([top_left, top_right, bottom_right, bottom_left], dtype='float32')
+    side = max([
+        distance_between(bottom_right, top_right),
+        distance_between(top_left, bottom_left),
+        distance_between(bottom_right, bottom_left),
+        distance_between(top_left, top_right)
+        ])
+    dst = np.array([[0, 0], [side - 1, 0], [side - 1, side - 1], [0, side - 1]], dtype='float32')
+    m = cv2.getPerspectiveTransform(src, dst)
+    return cv2.warpPerspective(img, m, (int(side), int(side)))
+
+def find_corners_of_largest_polygon(img):
+    contours, h = cv2.findContours(img.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  # Find contours
+    contours = sorted(contours, key=cv2.contourArea, reverse=True)
+    polygon = contours[0]
+    bottom_right, _ = max(enumerate([pt[0][0] + pt[0][1] for pt in polygon]), key=operator.itemgetter(1))
+    top_left, _ = min(enumerate([pt[0][0] + pt[0][1] for pt in polygon]), key=operator.itemgetter(1))
+    bottom_left, _ = min(enumerate([pt[0][0] - pt[0][1] for pt in polygon]), key=operator.itemgetter(1))
+    top_right, _ = max(enumerate([pt[0][0] - pt[0][1] for pt in polygon]), key=operator.itemgetter(1))
+    return [polygon[top_left][0], polygon[top_right][0], polygon[bottom_right][0], polygon[bottom_left][0]]
+
+def pre_process_image(img):
+    proc = cv2.GaussianBlur(img.copy(), (9, 9), 0)
+    proc = cv2.adaptiveThreshold(proc, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+    proc = cv2.bitwise_not(proc, proc)
+    return proc
+
+def main():
+    clean_img = cv2.imread('Testnum.png')
+    img = cv2.cvtColor(clean_img, cv2.COLOR_RGB2GRAY)
+    processed = pre_process_image(img)
+
+    contours, tresh = cv2.findContours(processed, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    corners = find_corners_of_largest_polygon(processed)
+    cropped = crop_and_warp(clean_img, corners)
+    cv2.imwrite('hope.jpg', cropped)
+    return
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+def clean_files ():
+    folder = 'blocks'
+    for the_file in os.listdir(folder):
+        file_path = os.path.join(folder, the_file)
+        try:
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+        except Exception as e:
+            print(e)
+
+def sort_contours(cnts, method="left-to-right"):
     reverse = False
     i = 0
-
-    # handle if we need to sort in reverse
     if method == "right-to-left" or method == "bottom-to-top":
         reverse = True
-
-    # handle if we are sorting against the y-coordinate rather than
-    # the x-coordinate of the bounding box
     if method == "top-to-bottom" or method == "bottom-to-top":
         i = 1
-
-    # construct the list of bounding boxes and sort them from top to
-    # bottom
     boundingBoxes = [cv2.boundingRect(c) for c in cnts]
     (cnts, boundingBoxes) = zip(*sorted(zip(cnts, boundingBoxes),
                                         key=lambda b: b[1][i], reverse=reverse))
-
-    # return the list of sorted contours and bounding boxes
     return (cnts, boundingBoxes)
 
 
@@ -35,6 +91,7 @@ def horizontal_image(proc):
     horizontal_size = cols // 30
     horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 1))
     horizontal = cv2.erode(horizontal, horizontalStructure)
+    horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 3))
     horizontal = cv2.dilate(horizontal, horizontalStructure)
     cv2.imwrite("horizontal.png", horizontal)
     return horizontal
@@ -46,48 +103,19 @@ def vertical_image(proc):
     verticalsize = rows // 30
     verticalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (1, verticalsize))
     vertical = cv2.erode(vertical, verticalStructure)
+    verticalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (1, verticalsize))
     vertical = cv2.dilate(vertical, verticalStructure)
     cv2.imwrite("vertical.png", vertical)
     return vertical
 
 
-def pre_process_image(img, skip_dilate=False):
-    proc = cv2.GaussianBlur(img.copy(), (9, 9), 0)
-    proc = cv2.adaptiveThreshold(proc, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
-    proc = cv2.bitwise_not(proc, proc)
-
-    if not skip_dilate:
-        kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
-        vertical = vertical_image(proc)
-        horizontal = horizontal_image(proc)
-        proc = cv2.addWeighted(vertical, 1, horizontal, 1, 0.0)
-    return proc
-
 
 def find_boxes(contours, img):
     idx = 0
     for c in contours:
-        # Returns the location and width,height for every contour
         x, y, w, h = cv2.boundingRect(c)
-        print(x, y, w, h)
-        idx += 1
-        new_img = img[y:y + h, x:x + w]
-        cv2.imwrite('blocks/' + str(idx) + '.png', new_img)
+        if isclose(w, h, rel_tol=0.10):
+            idx += 1
+            new_img = img[y:y + h, x:x + w]
+            cv2.imwrite('blocks/' + 'file number' +str(idx) + '.png', new_img)
 
-
-def main():
-    img = cv2.imread('Test1.png', cv2.IMREAD_GRAYSCALE)
-    processed = pre_process_image(img)
-    cv2.imwrite('processed.png', processed)
-
-    contours, tresh = cv2.findContours(processed, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    processed = cv2.cvtColor(processed, cv2.COLOR_GRAY2RGB)
-    all_contours = cv2.drawContours(processed.copy(), contours, -1, (128, 0, 128), 3)
-    cv2.imwrite('lololo.jpg', all_contours)
-    (contours, boundingBoxes) = sort_contours(contours, method="top-to-bottom")
-    img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
-    find_boxes(contours, img)
-
-
-if __name__ == '__main__':
-    main()

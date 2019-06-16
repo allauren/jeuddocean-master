@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e683af19-c8bf-4afd-b586-acd8031cadb6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gridmaker/Test1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gridmaker/Test2.png" beforeDir="false" afterPath="$PROJECT_DIR$/gridmaker/Test2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gridmaker/gridmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/gridmaker/gridmaker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gridmaker/horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gridmaker/lololo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/gridmaker/lololo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gridmaker/processed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gridmaker/vertical.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,30 +17,16 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="jeuddocean-master" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grid/creating_grid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gridmaker/Test1.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gridmaker/gridmaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+            <state relative-caret-position="278">
+              <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -43,22 +35,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grid/gaussians.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/color/color_detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret column="14" selection-start-column="14" selection-end-column="14" />
+            <state relative-caret-position="340">
+              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grid/lol.jpg">
+        <entry file="file://$PROJECT_DIR$/gridmaker/Testnum.png">
           <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gridmaker/img.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/box/box.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/long version/gridmaker2 (1).py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="799">
+              <caret line="51" column="62" selection-start-line="51" selection-start-column="62" selection-end-line="51" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -76,13 +95,15 @@
       <list>
         <option value="$PROJECT_DIR$/grid/creating_grid.py" />
         <option value="$PROJECT_DIR$/color/color_detection.py" />
+        <option value="$PROJECT_DIR$/box/box.py" />
+        <option value="$PROJECT_DIR$/long version/gridmaker2 (1).py" />
         <option value="$PROJECT_DIR$/gridmaker/gridmaker.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1069" />
+    <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -113,6 +134,11 @@
               <item name="jeuddocean-master" type="b2602c69:ProjectViewProjectNode" />
               <item name="jeuddocean-master" type="462c0819:PsiDirectoryNode" />
               <item name="gridmaker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jeuddocean-master" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jeuddocean-master" type="462c0819:PsiDirectoryNode" />
+              <item name="long version" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -158,6 +184,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="box" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="jeuddocean-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/box" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/box/box.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -233,14 +281,40 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="gridmaker2 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="jeuddocean-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/long version" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/long version/gridmaker2 (1).py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.color_detection" />
       <item itemvalue="Python.creating_grid" />
       <item itemvalue="Python.gridmaker" />
+      <item itemvalue="Python.gridmaker2 (1)" />
+      <item itemvalue="Python.box" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.gridmaker" />
+        <item itemvalue="Python.box" />
+        <item itemvalue="Python.gridmaker2 (1)" />
         <item itemvalue="Python.creating_grid" />
       </list>
     </recent_temporary>
@@ -257,7 +331,9 @@
       <updated>1560228845635</updated>
       <workItem from="1560228848464" duration="4359000" />
       <workItem from="1560365002913" duration="83000" />
-      <workItem from="1560460560494" duration="18415000" />
+      <workItem from="1560460560494" duration="43032000" />
+      <workItem from="1560532137565" duration="2060000" />
+      <workItem from="1560630687815" duration="9326000" />
     </task>
     <task id="LOCAL-00001" summary="badamdidou je test">
       <created>1560473246486</created>
@@ -280,17 +356,47 @@
       <option name="project" value="LOCAL" />
       <updated>1560479788125</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="je les trie dans le bon ordre">
+      <created>1560480076143</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560480076143</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22857000" />
+    <option name="totallyTimeSpent" value="58860000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1069" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16650149" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49761525" visible="true" weight="0.18708971" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.5023847" side_tool="true" visible="true" weight="0.18708971" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.34245077" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49950445" weight="0.32932165" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50319827" side_tool="true" weight="0.312026" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32932165" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.4968017" visible="true" weight="0.3118162" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32903865" />
+      <window_info anchor="right" x="0" y="0" width="300" height="800" id="Documentation" order="4" side_tool="true" weight="0.58102345" />
+      <window_info anchor="right" id="Database" order="5" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.08955224" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -303,25 +409,36 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49950445" weight="0.32932165" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5024777" side_tool="true" weight="0.31509846" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50319827" side_tool="true" visible="true" weight="0.312026" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32932165" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.4975223" visible="true" weight="0.31509846" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4968017" visible="true" weight="0.312026" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32903865" />
       <window_info anchor="right" x="0" y="0" width="300" height="800" id="Documentation" order="4" side_tool="true" weight="0.48249453" />
       <window_info anchor="right" id="Database" order="5" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="badamdidou je test" />
     <MESSAGE value="erreur dans le git sur lequel ont ete envoyes les fichiers, gridmaker fonctionnel pour detection de grille en pixel" />
     <MESSAGE value="je trouve des carres :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="je trouve des carres :D" />
+    <MESSAGE value="je les trie dans le bon ordre" />
+    <option name="LAST_COMMIT_MESSAGE" value="je les trie dans le bon ordre" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/jeuddocean_master$creating_grid.coverage" NAME="creating_grid Coverage Results" MODIFIED="1560461375665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/grid" />
@@ -330,50 +447,76 @@
     <entry file="file://$PROJECT_DIR$/color/videoplayback.mp4">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/grid/lol.jpg">
+    <entry file="file://$PROJECT_DIR$/gridmaker/threshold2.png" />
+    <entry file="file://$PROJECT_DIR$/gridmaker/threshold1.png" />
+    <entry file="file://$PROJECT_DIR$/long version/gridmaker2 (2).png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/grid/test.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grid/gaussians.jpg">
+    <entry file="file://$PROJECT_DIR$/long version/gridmaker2 (1).jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/grid/creating_grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grid/gaussians.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grid/lol.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gridmaker/Test1.png" />
+    <entry file="file://$PROJECT_DIR$/gridmaker/gridmaker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/color/color_detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gridmaker/threshold2.png">
+    <entry file="file://$PROJECT_DIR$/gridmaker/Testnum.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/gridmaker/threshold1.png">
+    <entry file="file://$PROJECT_DIR$/gridmaker/img.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/gridmaker/Test1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/color/color_detection.py">
+    <entry file="file://$PROJECT_DIR$/box/box.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gridmaker/gridmaker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="87" lean-forward="true" selection-start-line="87" selection-end-line="87" />
+        <state relative-caret-position="425">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/long version/gridmaker2 (1).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="51" column="62" selection-start-line="51" selection-start-column="62" selection-end-line="51" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grid/test.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>
