@@ -2,18 +2,22 @@ import cv2
 import numpy as np
 import argparse
 import imutils
+import json
 from matplotlib import pyplot as plt
 import sys
 from cmath import isclose
 import os, shutil
 import operator
-
+from sklearn.cluster import KMeans
 
 def distance_between(p1, p2):
     a = p2[0] - p1[0]
     b = p2[1] - p1[1]
     return np.sqrt((a ** 2) + (b ** 2))
 
+def unique_count_app(a):
+    colors, count = np.unique(a.reshape(-1,a.shape[-1]), axis=0, return_counts=True)
+    return colors[count.argmax()]
 
 def crop_and_warp(img, crop_rect):
     top_left, top_right, bottom_right, bottom_left = crop_rect[0], crop_rect[1], crop_rect[2], crop_rect[3]
@@ -45,7 +49,7 @@ def pre_process_image(img):
     return proc
 
 def main():
-    clean_img = cv2.imread('Testnum.png')
+    clean_img = cv2.imread('map.png')
     img = cv2.cvtColor(clean_img, cv2.COLOR_RGB2GRAY)
     processed = pre_process_image(img)
 
@@ -53,6 +57,19 @@ def main():
     corners = find_corners_of_largest_polygon(processed)
     cropped = crop_and_warp(clean_img, corners)
     cv2.imwrite('hope.jpg', cropped)
+    cv2.imwrite('ball.jpg', cropped[350:530, 450:600])
+    cv2.imwrite('ball2.jpg', cropped[530:700, 350:510])
+    cv2.imwrite('ball3.jpg', cropped[530:700, 550:700])
+    val1 = unique_count_app(cropped[350:530, 450:600])
+    val2 =unique_count_app(cropped[530:700, 350:510])
+    val3 = unique_count_app(cropped[530:700, 550:700])
+    a = {'circle 1':str(val1),
+         'circle 2':str(val2),
+         'circle 3':str(val3)}
+
+
+    aa = json.dumps(a)
+    print(aa)
     return
 
 
@@ -106,6 +123,7 @@ def vertical_image(proc):
     verticalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (1, verticalsize))
     vertical = cv2.dilate(vertical, verticalStructure)
     cv2.imwrite("vertical.png", vertical)
+
     return vertical
 
 
