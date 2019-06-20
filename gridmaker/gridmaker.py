@@ -72,12 +72,19 @@ def main():
     # calculs pour determiner la position des cercles par rapport a la taille du carre redessine
 
     size = cropped.shape[0]
-    height_start = int(size * 400 / 4219)
-    print(height_start)
-
-    cv2.imwrite('ball.jpg', cropped[height_start:530, 450:600])
-    cv2.imwrite('ball2.jpg', cropped[530:700, 350:510])
-    cv2.imwrite('ball3.jpg', cropped[530:700, 550:700])
+    height_start = [int(size * 370 / 4219), int(size * 530 / 4219)]
+    width_start = [int(size * 450 / 4219), int(size * 360 / 4219), int(size * 550 / 4219)]
+    thick = int(size * 155 / 4219)
+    change = int(size * 632 / 4219)
+    x = [0, 1, 2, 3, 4, 5]
+    y = 5
+    for i in x :
+        valx =  i * change
+        valy = y * change
+        cv2.imwrite('first' + chr(ord('A') + y) + str(i + 1) + '.jpg', cropped[height_start[0] + valx : height_start[0] + valx + thick, width_start[0] + valy :width_start[0] + valy + thick])
+        cv2.imwrite('second' + 'A' + str(i + 1) + '.jpg', cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[1] + valy :width_start[1] + valy + thick])
+        cv2.imwrite('third' + 'A' + str(i + 1) + '.jpg', cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[2] + valy :width_start[2] + valy + thick])
+        print(height_start[0] + i * change)
 
     val1 = unique_count_app(cropped[350:530, 450:600])
     val2 =unique_count_app(cropped[530:700, 350:510])
@@ -94,65 +101,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-def clean_files ():
-    folder = 'blocks'
-    for the_file in os.listdir(folder):
-        file_path = os.path.join(folder, the_file)
-        try:
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
-        except Exception as e:
-            print(e)
-
-def sort_contours(cnts, method="left-to-right"):
-    reverse = False
-    i = 0
-    if method == "right-to-left" or method == "bottom-to-top":
-        reverse = True
-    if method == "top-to-bottom" or method == "bottom-to-top":
-        i = 1
-    boundingBoxes = [cv2.boundingRect(c) for c in cnts]
-    (cnts, boundingBoxes) = zip(*sorted(zip(cnts, boundingBoxes),
-                                        key=lambda b: b[1][i], reverse=reverse))
-    return (cnts, boundingBoxes)
-
-
-def horizontal_image(proc):
-    horizontal = np.copy(proc)
-    cols = horizontal.shape[1]
-    horizontal_size = cols // 30
-    horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 1))
-    horizontal = cv2.erode(horizontal, horizontalStructure)
-    horizontalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (horizontal_size, 3))
-    horizontal = cv2.dilate(horizontal, horizontalStructure)
-    cv2.imwrite("horizontal.png", horizontal)
-    return horizontal
-
-
-def vertical_image(proc):
-    vertical = np.copy(proc)
-    rows = vertical.shape[0]
-    verticalsize = rows // 30
-    verticalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (1, verticalsize))
-    vertical = cv2.erode(vertical, verticalStructure)
-    verticalStructure = cv2.getStructuringElement(cv2.MORPH_RECT, (1, verticalsize))
-    vertical = cv2.dilate(vertical, verticalStructure)
-    cv2.imwrite("vertical.png", vertical)
-
-    return vertical
-
-
-
-def find_boxes(contours, img):
-    idx = 0
-    for c in contours:
-        x, y, w, h = cv2.boundingRect(c)
-        if isclose(w, h, rel_tol=0.10):
-            idx += 1
-            new_img = img[y:y + h, x:x + w]
-            cv2.imwrite('blocks/' + 'file number' +str(idx) + '.png', new_img)
-
