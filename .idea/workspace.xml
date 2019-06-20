@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e683af19-c8bf-4afd-b586-acd8031cadb6" name="Default Changelist" comment="">
+    <list default="true" id="e683af19-c8bf-4afd-b586-acd8031cadb6" name="Default Changelist" comment="completement retravaille pour fiter a des cartes penchees etcs etcs avec pour objectif final de le mettre dans un systeme d api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gridmaker/Test1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gridmaker/Test2.png" beforeDir="false" afterPath="$PROJECT_DIR$/gridmaker/Test2.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gridmaker/gridmaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/gridmaker/gridmaker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gridmaker/horizontal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gridmaker/lololo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/gridmaker/lololo.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gridmaker/processed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gridmaker/vertical.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,11 +19,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gridmaker/gridmaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+            <state relative-caret-position="165">
+              <caret line="75" selection-start-line="75" selection-end-line="75" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/numpy/core/tests/test_numeric.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="31365">
+              <caret line="1861" column="6" selection-start-line="1861" selection-start-column="6" selection-end-line="1861" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -112,7 +115,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,6 +146,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,7 +336,9 @@
       <workItem from="1560365002913" duration="83000" />
       <workItem from="1560460560494" duration="43032000" />
       <workItem from="1560532137565" duration="2060000" />
-      <workItem from="1560630687815" duration="9326000" />
+      <workItem from="1560630687815" duration="16625000" />
+      <workItem from="1560848363781" duration="815000" />
+      <workItem from="1560923899128" duration="2725000" />
     </task>
     <task id="LOCAL-00001" summary="badamdidou je test">
       <created>1560473246486</created>
@@ -363,18 +368,32 @@
       <option name="project" value="LOCAL" />
       <updated>1560480076143</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="completement retravaille pour fiter a des cartes penchees etcs etcs avec pour objectif final de le mettre dans un systeme d api">
+      <created>1560675901735</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560675901735</updated>
+    </task>
+    <task id="LOCAL-00006" summary="completement retravaille pour fiter a des cartes penchees etcs etcs avec pour objectif final de le mettre dans un systeme d api">
+      <created>1560742622489</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560742622490</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58860000" />
+    <option name="totallyTimeSpent" value="69699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49761525" visible="true" weight="0.18708971" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984472" visible="true" weight="0.19146608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" sideWeight="0.5023847" side_tool="true" visible="true" weight="0.18708971" />
+      <window_info id="Favorites" order="2" sideWeight="0.5015528" side_tool="true" weight="0.09115139" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.34245077" />
@@ -385,14 +404,14 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49950445" weight="0.32932165" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50319827" side_tool="true" weight="0.312026" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50547045" side_tool="true" visible="true" weight="0.30525163" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32932165" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.4968017" visible="true" weight="0.3118162" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49452955" visible="true" weight="0.30525163" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32903865" />
-      <window_info anchor="right" x="0" y="0" width="300" height="800" id="Documentation" order="4" side_tool="true" weight="0.58102345" />
+      <window_info anchor="right" x="0" y="0" width="300" height="800" id="Documentation" order="4" side_tool="true" weight="0.32056892" />
       <window_info anchor="right" id="Database" order="5" />
     </layout>
     <layout-to-restore>
@@ -438,7 +457,8 @@
     <MESSAGE value="erreur dans le git sur lequel ont ete envoyes les fichiers, gridmaker fonctionnel pour detection de grille en pixel" />
     <MESSAGE value="je trouve des carres :D" />
     <MESSAGE value="je les trie dans le bon ordre" />
-    <option name="LAST_COMMIT_MESSAGE" value="je les trie dans le bon ordre" />
+    <MESSAGE value="completement retravaille pour fiter a des cartes penchees etcs etcs avec pour objectif final de le mettre dans un systeme d api" />
+    <option name="LAST_COMMIT_MESSAGE" value="completement retravaille pour fiter a des cartes penchees etcs etcs avec pour objectif final de le mettre dans un systeme d api" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/jeuddocean_master$creating_grid.coverage" NAME="creating_grid Coverage Results" MODIFIED="1560461375665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/grid" />
@@ -471,11 +491,18 @@
     <entry file="file://$PROJECT_DIR$/gridmaker/Test1.png" />
     <entry file="file://$PROJECT_DIR$/gridmaker/gridmaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="47" column="38" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+        <state relative-caret-position="165">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/numpy/core/tests/test_numeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31365">
+          <caret line="1861" column="6" selection-start-line="1861" selection-start-column="6" selection-end-line="1861" selection-end-column="6" />
         </state>
       </provider>
     </entry>
