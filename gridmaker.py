@@ -3,7 +3,8 @@ import numpy as np
 import json
 import operator
 
-
+def color_difference (color1, color2):
+    return sum([abs(component1-component2) for component1, component2 in zip(color1, color2)])
 
 def distance_between(p1, p2):
     a = p2[0] - p1[0]
@@ -69,22 +70,32 @@ def main():
     width_start = [int(size * 450 / 4219), int(size * 360 / 4219), int(size * 550 / 4219)]
     thick = int(size * 155 / 4219)
     change = int(size * 632 / 4219)
-    x = [0, 1, 2, 3, 4, 5]
-    y = 5
-    for i in x :
-        valx =  i * change
-        valy = y * change
-        cv2.imwrite('first' + chr(ord('A') + y) + str(i + 1) + '.jpg', cropped[height_start[0] + valx : height_start[0] + valx + thick, width_start[0] + valy :width_start[0] + valy + thick])
-        cv2.imwrite('second' + 'A' + str(i + 1) + '.jpg', cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[1] + valy :width_start[1] + valy + thick])
-        cv2.imwrite('third' + 'A' + str(i + 1) + '.jpg', cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[2] + valy :width_start[2] + valy + thick])
-        print(height_start[0] + i * change)
+    x = [[0, 1, 2], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4, 5], [0, 3, 4, 5], [0, 1, 2, 3, 4, 5]]
+    cell = 0
+    dictlist = [dict() for x in range(30)]
+    colors = {"Red": (255, 0, 0), "Yellow": (255, 255, 0), "Green": (0, 255, 0)}
 
-    val1 = unique_count_app(cropped[350:530, 450:600])
-    val2 =unique_count_app(cropped[530:700, 350:510])
-    val3 = unique_count_app(cropped[530:700, 550:700])
-    a = {'circle 1':str(val1),
-         'circle 2':str(val2),
-         'circle 3':str(val3)}
+    for y in x :
+        valy = x.index(y) * change
+        for i in y :
+            valx =  i * change
+            color1 = unique_count_app(cropped[height_start[0] + valx : height_start[0] + valx + thick, width_start[0] + valy :width_start[0] + valy + thick])
+            color2 = unique_count_app(cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[1] + valy :width_start[1] + valy + thick])
+            color3 = unique_count_app(cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[2] + valy :width_start[2] + valy + thick])
+            dictlist[cell] = {
+                "peche": color1,
+                "eolien": color3,
+                "loisir": color2,
+                "transport": 0
+            }
+            cell += 1
+    for dico in dictlist:
+        print(dico)
+
+
+    # a = {'circle 1':str(val1),
+    #    'circle 2':str(val2),
+    #    'circle 3':str(val3)}
     aa = json.dumps(a)
     print(aa)
     return
