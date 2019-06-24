@@ -2,7 +2,10 @@ import cv2
 import numpy as np
 import json
 import operator
+import requests
 
+
+# fonction qui permet de retourner la proximite du code BGR par rapport aux couleurs de references
 def color_difference (color1, color2):
     return sum([abs(component1-component2) for component1, component2 in zip(color1, color2)])
 
@@ -28,7 +31,7 @@ def crop_and_warp(img, crop_rect):
         distance_between(top_left, bottom_left),
         distance_between(bottom_right, bottom_left),
         distance_between(top_left, top_right)
-        ])
+    ])
     dst = np.array([[0, 0], [side - 1, 0], [side - 1, side - 1], [0, side - 1]], dtype='float32')
     m = cv2.getPerspectiveTransform(src, dst)
     return cv2.warpPerspective(img, m, (int(side), int(side)))
@@ -56,50 +59,81 @@ def pre_process_image(img):
     proc = cv2.bitwise_not(proc, proc)
     return proc
 
-def main():
+def create_json (color1, color2, color3):
+    colors = {"Red": (243, 54, 191), "Yellow": (0, 255, 255), "Green": (80, 255, 149), "White": (255, 255, 255), "Blue": (255, 0, 0)}
+    poisson = 0
+    eolien = 0
+    loisir = 0
+    transport = 0
+
+    values =[]
+    diff = [[color_difference(color1, target_value), target_name] for target_name, target_value in colors.items()]
+    diff.sort()
+    values.append(diff[0][1])
+    diff2 = [[color_difference(color2, target_value), target_name] for target_name, target_value in colors.items()]
+    diff2.sort()
+    values.append(diff2[0][1])
+    diff3 = [[color_difference(color3, target_value), target_name] for target_name, target_value in colors.items()]
+    diff3.sort()
+    values.append(diff3[0][1])
+    for value in values:
+        if value == "Red":
+            poisson += 1
+        elif value == "White":
+            eolien += 1
+        elif value == "Vert":
+            loisir += 1
+        elif value == "Yellow":
+            transport += 1
+    return ({
+        "peche": poisson,
+        "eolien": eolien,
+        "loisir": loisir,
+        ²"transport": transport
+    })
+
+
+
+
+def gridparse():
+    #cv2.VideoCapture()
     clean_img = cv2.imread('map.png')
-    img = cv2.cvtColor(clean_img, cv2.COLOR_RGB2GRAY)
-    processed = pre_process_image(img)
-    corners = find_corners_of_largest_polygon(processed)
-    cropped = crop_and_warp(clean_img, corners)
-    # cv2.imwrite('hope.jpg', cropped)
-    # calculs pour determiner la position des cercles par rapport a la taille du carre redessine
+    while(1):
+        img = cv2.cvtColor(clean_img, cv2.COLOR_RGB2GRAY)
+        processed = pre_process_image(img)
+        corners = find_corners_of_largest_polygon(processed)
+        cropped = crop_and_warp(clean_img, corners)
+        # cv2.imwrite('hope.jpg', cropped)
+        # calculs pour determiner la position des cercles par rapport a la taille du carre redessine
 
-    size = cropped.shape[0]
-    height_start = [int(size * 370 / 4219), int(size * 530 / 4219)]
-    width_start = [int(size * 450 / 4219), int(size * 360 / 4219), int(size * 550 / 4219)]
-    thick = int(size * 155 / 4219)
-    change = int(size * 632 / 4219)
-    x = [[0, 1, 2], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4, 5], [0, 3, 4, 5], [0, 1, 2, 3, 4, 5]]
-    cell = 0
-    dictlist = [dict() for x in range(30)]
-    colors = {"Red": (255, 0, 0), "Yellow": (255, 255, 0), "Green": (0, 255, 0)}
+        size = cropped.shape[0]
+        height_start = [int(size * 370 / 4219), int(size * 530 / 4219)]
+        width_start = [int(size * 450 / 4219), int(size * 360 / 4219), int(size * 550 / 4219)]
+        thick = int(size * 155 / 4219)
+        change = int(size * 632 / 4219)
+        x = [[0, 1, 2], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4], [0, 1, 2, 3, 4, 5], [0, 3, 4, 5], [0, 1, 2, 3, 4, 5]]
+       request = {}
+        cell = 1
+        col = 0
+        for y in x :
+            valy = col * change
+            print(col)
+            for i in y :
+                valx =  i * change
+                color1 = unique_count_app(cropped[height_start[0] + valx : height_start[0] + valx + thick, width_start[0] + valy :width_start[0] + valy + thick])
+                color2 = unique_count_app(cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[1] + valy :width_start[1] + valy + thick])
+                color3 = unique_count_app(cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[2] + valy :width_start[2] + valy + thick])
+                dic = {cell:create_json(color1, color2, color3)}
+                request.update(dic)
+                cell += 1
+                print(cell)
+            col += 1
+        url = "http://localhost:" #completer ici
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        requests.post(url, json=dumps(request, sort_keys=True, indent=4), headers=headers)
 
-    for y in x :
-        valy = x.index(y) * change
-        for i in y :
-            valx =  i * change
-            color1 = unique_count_app(cropped[height_start[0] + valx : height_start[0] + valx + thick, width_start[0] + valy :width_start[0] + valy + thick])
-            color2 = unique_count_app(cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[1] + valy :width_start[1] + valy + thick])
-            color3 = unique_count_app(cropped[height_start[1] + valx : height_start[1] + valx + thick, width_start[2] + valy :width_start[2] + valy + thick])
-            dictlist[cell] = {
-                "peche": color1,
-                "eolien": color3,
-                "loisir": color2,
-                "transport": 0
-            }
-            cell += 1
-    for dico in dictlist:
-        print(dico)
-
-
-    # a = {'circle 1':str(val1),
-    #    'circle 2':str(val2),
-    #    'circle 3':str(val3)}
-    aa = json.dumps(a)
-    print(aa)
-    return
 
 
 if __name__ == '__main__':
-    main()
+    gridparse()
+
